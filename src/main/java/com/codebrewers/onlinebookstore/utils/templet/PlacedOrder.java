@@ -119,25 +119,25 @@ public class PlacedOrder {
                 "                                                        </table>\n" +
                 "                                                    </td>\n" +
                 "                                                </tr>\n" +
-                                                                         generateTable(bookDetails) +
+                generateTable(bookDetails) +
                 "                                                                                <tr>\n" +
                 "                                                                                    <td class=\"esd-block-text es-p15b\" align=\"center\">\n" +
                 "                                                                                        <table class=\"cke_show_border\" width=\"240\" height=\"101\" cellspacing=\"1\" cellpadding=\"1\" border=\"0\">\n" +
                 "                                                                                            <tbody>\n" +
 
                 "                                                                                                <tr>\n" +
-                "                                                                                                    <td><span style=\"font-size: 18px; line-height: 200%;\">Sub Total:</span></td>\n" +
-                "                                                                                                    <td style=\"text-align: right;\"><span style=\"font-size: 16px; line-height: 200%;\"> RS. " + totalPrice + "</span></td>\n" +
+                "                                                                                                    <td><span style=\"font-size: 15px; line-height: 200%;\">Sub Total:</span></td>\n" +
+                "                                                                                                    <td style=\"text-align: right;\"><span style=\"font-size: 15px; line-height: 200%;\"> RS. " + totalPrice + "</span></td>\n" +
                 "                                                                                                </tr>\n" +
 
                 "                                                                                                <tr>\n" +
-                "                                                                                                    <td><span style=\"font-size: 18px; line-height: 200%;\">Discount Price:</span></td>\n" +
-                "                                                                                                    <td style=\"text-align: right;\"><span style=\"font-size: 16px; line-height: 200%;\">RS. -" + discountPrice + "</span></td>\n" +
+                "                                                                                                    <td><span style=\"font-size: 15px; line-height: 170%;\">Discount Price:</span></td>\n" +
+                "                                                                                                    <td style=\"text-align: right;\"><span style=\"font-size: 15px; line-height: 170%; margin-left: -5%\">RS. -" + discountPrice + "</span></td>\n" +
                 "                                                                                                </tr>\n" +
 
                 "                                                                                                <hr style=\"width:180%;margin-left:0%;\"><tr>\n" +
-                "                                                                                                    <td><span style=\"font-size: 18px; line-height: 200%;\"><strong>Total Price:</strong></span></td>\n" +
-                "                                                                                                    <td style=\"text-align: right;\"><span style=\"font-size: 18px; line-height: 200%;\"><strong> RS. " + ((totalPrice - discountPrice) < 0 ? 0 : (totalPrice - discountPrice)) + "</strong></span></td>\n" +
+                "                                                                                                    <td><span style=\"font-size: 18px; line-height: 180%;\"><strong>Total Price:</strong></span></td>\n" +
+                "                                                                                                    <td style=\"text-align: right;\"><span style=\"font-size: 18px; line-height: 180%;\"><strong> RS. " + ((totalPrice - discountPrice) < 0 ? 0 : (totalPrice - discountPrice)) + "</strong></span></td>\n" +
                 "                                                                                                </tr>\n" +
                 "                                                                                            </tbody>\n" +
                 "                                                                                        </table>\n" +

@@ -18,17 +18,19 @@ public class Coupons {
     public Double discountPrice;
     public String description;
     public String expireCouponDate;
+    public Double minimumPrice;
 
 
     @JsonIgnore
     @OneToMany(mappedBy = "coupons")
     public List<CouponsDetails> couponsDetails;
 
-    public Coupons(String couponsType, Double discountPrice, String description, String expireCouponDate) {
+    public Coupons(String couponsType, Double discountPrice, String description, String expireCouponDate,Double minimumPrice) {
         this.couponsType = couponsType;
         this.discountPrice = discountPrice;
         this.description = description;
         this.expireCouponDate = expireCouponDate;
+        this.minimumPrice=minimumPrice;
     }
 
     public Integer getId() {

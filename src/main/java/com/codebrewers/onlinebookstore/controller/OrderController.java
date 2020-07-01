@@ -18,8 +18,8 @@ public class OrderController {
     private IOrderService orderService;
 
     @PostMapping("/order")
-    public ResponseEntity<ResponseDTO>  placeOrder(@RequestParam(name = "totalprice") Double totalPrice, @RequestHeader(value = "token",required = false) String token) throws MessagingException {
-        Integer orderId = orderService.placeOrder(totalPrice,token);
+    public ResponseEntity<ResponseDTO>  placeOrder(@RequestParam(name = "totalprice") Double totalPrice,@RequestParam(name = "discountPrice") Double discountPrice, @RequestHeader(value = "token",required = false) String token) throws MessagingException {
+        Integer orderId = orderService.placeOrder(totalPrice,discountPrice,token);
         ResponseDTO response = new ResponseDTO("Order Placed Successfully", orderId);
         return new ResponseEntity<>(response, HttpStatus.OK);
     }

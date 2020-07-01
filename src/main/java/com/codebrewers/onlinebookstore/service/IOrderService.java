@@ -7,6 +7,6 @@ import java.util.List;
 
 public interface IOrderService {
 
-    Integer placeOrder(Double totalPrice, String token) throws MessagingException;
+    Integer placeOrder(Double totalPrice, Double discountPrice,String token) throws MessagingException;
     List<BookCartDetails> fetchOrders(String token);
 }

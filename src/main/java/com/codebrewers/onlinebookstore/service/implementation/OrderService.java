@@ -41,7 +41,7 @@ public class OrderService implements IOrderService {
 
 
     @Override
-    public Integer placeOrder(Double totalPrice, String token) throws MessagingException {
+    public Integer placeOrder(Double totalPrice,Double discountPrice, String token) throws MessagingException {
         Integer orderId = generatedOrderId();
         CartDetails cart = getCart(token);
         List<BookCartDetails> cartBooks = cartDetailsRepository.fetchCartItems(cart.getId());
@@ -54,7 +54,7 @@ public class OrderService implements IOrderService {
         });
         cartDetailsRepository.updateOrderPlacedStatus(cart.getId());
 
-        String body = placedOrder.getHeader(cart,orderId,totalPrice,cartBooks);
+        String body = placedOrder.getHeader(cart,orderId,totalPrice,cartBooks,discountPrice);
 
         mailService.sendMail(body,"Order Placed",cart.userDetails.emailID);
         return saveOrder.getOrderId();

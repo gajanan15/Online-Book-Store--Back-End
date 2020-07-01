@@ -11,6 +11,7 @@ import com.codebrewers.onlinebookstore.utils.implementation.Token;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -31,19 +32,26 @@ public class CouponService implements ICouponService {
 
 
     @Override
-    public List<Coupons> fetchCoupon(String token) {
+    public List<Coupons> fetchCoupon(String token,Double totalPrice) {
         int userId = jwtToken.decodeJWT(token);
         List<Coupons> coupons = couponRepository.findAll();
+
+        List<Coupons> couponsList=new ArrayList<>();
+        for(Coupons coupons1:coupons){
+            if(coupons1.minimumPrice<=totalPrice){
+                couponsList.add(coupons1);
+            }
+        }
 
         List<CouponsDetails> couponsDetails = couponDetailsRepository.findByUserId(userId);
 
         for (CouponsDetails couponDetails1 : couponsDetails) {
-            coupons.remove(couponDetails1.coupons);
+            couponsList.remove(couponDetails1.coupons);
         }
-        if (coupons.isEmpty())
+        if (coupons.isEmpty() || couponsList.isEmpty())
             throw new CouponException("Coupons Not Available");
 
-        return coupons;
+        return couponsList;
     }
 
     @Override
