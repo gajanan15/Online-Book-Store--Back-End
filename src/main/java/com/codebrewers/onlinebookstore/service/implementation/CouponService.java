@@ -12,6 +12,8 @@ import com.codebrewers.onlinebookstore.utils.implementation.Token;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -40,7 +42,8 @@ public class CouponService implements ICouponService {
         List<Coupons> couponsList=new ArrayList<>();
         for(Coupons coupons1:coupons){
             if(coupons1.minimumPrice<=totalPrice){
-                couponsList.add(coupons1);
+                if(coupons1.expireCouponDate.compareTo(LocalDate.now().format(DateTimeFormatter.ofPattern("dd-MM-yyyy")))>0)
+                    couponsList.add(coupons1);
             }
         }
 
@@ -49,6 +52,7 @@ public class CouponService implements ICouponService {
         for (CouponsDetails couponDetails1 : couponsDetails) {
             couponsList.remove(couponDetails1.coupons);
         }
+
         if (coupons.isEmpty() || couponsList.isEmpty())
             throw new CouponException("Coupons Not Available");
 
